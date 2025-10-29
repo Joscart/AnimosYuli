@@ -2,9 +2,10 @@
 interface Props {
   message?: string;
   centerGifSrc: string;
+  specialImageSrc?: string;
 }
 
-const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
+const { message = "Animos Yuli <3", centerGifSrc, specialImageSrc } = Astro.props;
 ---
 
 <div class="center-content">
@@ -16,45 +17,95 @@ const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
   </div>
 </div>
 
+<!-- Special popup image overlay -->
+<div class="special-popup" id="specialPopup">
+  <img src={specialImageSrc} alt="Special!" id="specialImage" />
+</div>
+
 <script>
   const messageBox = document.getElementById('messageBox');
+  const specialPopup = document.getElementById('specialPopup');
+  const specialImage = document.getElementById('specialImage');
+  let clickCount = 0;
   
-  if (messageBox) {
+  if (messageBox && specialPopup && specialImage) {
     messageBox.addEventListener('click', () => {
-      // Get box dimensions and position
-      const rect = messageBox.getBoundingClientRect();
-      const heartEmojis = ['💖', '💕', '💗', '💓', '💝', '❤️', '💘'];
+      clickCount++;
       
-      // Create multiple hearts around the edges
-      for (let i = 0; i < 12; i++) {
+      // Show special popup after 10 clicks
+      if (clickCount === 10) {
+        specialPopup.classList.add('show');
+        
+        // Hide after 3 seconds
+        setTimeout(() => {
+          specialPopup.classList.add('hide');
+          
+          // Reset after animation completes
+          setTimeout(() => {
+            specialPopup.classList.remove('show', 'hide');
+            clickCount = 0; // Reset counter
+          }, 600);
+        }, 3000);
+      }
+      
+      const rect = messageBox.getBoundingClientRect();
+      const heartEmojis = ['💖', '💕', '💗', '💓', '💝'];
+      
+      // Create 5 hearts from random positions on the border
+      for (let i = 0; i < 5; i++) {
         const heart = document.createElement('div');
         heart.className = 'floating-heart';
-        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        heart.textContent = heartEmojis[i];
         
-        // Random position on the edge of the box
-        const angle = (i / 12) * Math.PI * 2;
-        const distance = 0; // Start from the edge
+        // Random side: 0=top, 1=right, 2=bottom, 3=left
+        const side = Math.floor(Math.random() * 4);
+        let startX, startY, angle;
         
-        const startX = rect.left + rect.width / 2 + Math.cos(angle) * (rect.width / 2);
-        const startY = rect.top + rect.height / 2 + Math.sin(angle) * (rect.height / 2);
+        switch(side) {
+          case 0: // Top edge
+            startX = rect.left + Math.random() * rect.width;
+            startY = rect.top;
+            angle = -90 + (Math.random() * 60 - 30); // -120 to -60 degrees
+            break;
+          case 1: // Right edge
+            startX = rect.right;
+            startY = rect.top + Math.random() * rect.height;
+            angle = 0 + (Math.random() * 60 - 30); // -30 to 30 degrees
+            break;
+          case 2: // Bottom edge
+            startX = rect.left + Math.random() * rect.width;
+            startY = rect.bottom;
+            angle = 90 + (Math.random() * 60 - 30); // 60 to 120 degrees
+            break;
+          case 3: // Left edge
+            startX = rect.left;
+            startY = rect.top + Math.random() * rect.height;
+            angle = 180 + (Math.random() * 60 - 30); // 150 to 210 degrees
+            break;
+        }
+        
+        // Convert angle to radians for direction calculation
+        const angleRad = (angle * Math.PI) / 180;
+        const distance = 100 + Math.random() * 50; // Travel 100-150px
+        
+        const endX = Math.cos(angleRad) * distance;
+        const endY = Math.sin(angleRad) * distance;
         
         heart.style.left = `${startX}px`;
         heart.style.top = `${startY}px`;
         
-        // Random animation duration
+        // Random animation duration between 1-1.5 seconds
         const duration = 1 + Math.random() * 0.5;
         heart.style.animationDuration = `${duration}s`;
         
-        // Calculate direction for outward movement
-        const endX = startX + Math.cos(angle) * 150;
-        const endY = startY + Math.sin(angle) * 150;
-        
-        heart.style.setProperty('--end-x', `${endX - startX}px`);
-        heart.style.setProperty('--end-y', `${endY - startY}px`);
+        // Set CSS variables for animation
+        heart.style.setProperty('--end-x', `${endX}px`);
+        heart.style.setProperty('--end-y', `${endY}px`);
+        heart.style.setProperty('--rotation', `${Math.random() * 720 - 360}deg`);
         
         document.body.appendChild(heart);
         
-        // Remove after animation
+        // Remove after animation completes
         setTimeout(() => {
           heart.remove();
         }, duration * 1000);
@@ -181,6 +232,66 @@ const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
     }
   }
 
+  /* Special popup styles */
+  .special-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .special-popup.show {
+    display: flex;
+  }
+
+  .special-popup img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: popup-appear 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .special-popup.hide img {
+    animation: popup-disappear 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  @keyframes popup-appear {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1) rotate(180deg);
+    }
+    100% {
+      transform: scale(1) rotate(360deg);
+      opacity: 1;
+    }
+  }
+
+  @keyframes popup-disappear {
+    0% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1) rotate(-180deg);
+    }
+    100% {
+      transform: scale(0) rotate(-360deg);
+      opacity: 0;
+    }
+  }
+
   .floating-heart {
     position: fixed;
     font-size: 2rem;
@@ -188,19 +299,24 @@ const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
     z-index: 1000;
     animation: float-away 1.5s ease-out forwards;
     opacity: 1;
+    transform-origin: center center;
   }
 
   @keyframes float-away {
     0% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
+      transform: translate(0, 0) scale(0.5) rotate(0deg);
+      opacity: 1;
+    }
+    20% {
+      transform: translate(calc(var(--end-x) * 0.2), calc(var(--end-y) * 0.2)) scale(1.2) rotate(calc(var(--rotation) * 0.3));
       opacity: 1;
     }
     50% {
       opacity: 1;
-      transform: translate(var(--end-x), var(--end-y)) scale(1.5) rotate(180deg);
+      transform: translate(calc(var(--end-x) * 0.6), calc(var(--end-y) * 0.6)) scale(1.5) rotate(calc(var(--rotation) * 0.6));
     }
     100% {
-      transform: translate(var(--end-x), var(--end-y)) scale(0.5) rotate(360deg);
+      transform: translate(var(--end-x), var(--end-y)) scale(0.8) rotate(var(--rotation));
       opacity: 0;
     }
   }

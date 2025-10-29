@@ -10,18 +10,19 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 // Placeholder paths - Users should replace these with actual images/gifs
 const backgroundGif = `${base}assets/gifs/background.gif`;
 const centerGif = `${base}assets/gifs/center.gif`;
+const specialImage = `${base}assets/images/special.webp`;
 
 // Example placeholder images - Users should add their own images to /public/assets/images/
 const leftImages = [
-  `${base}assets/images/star1.jpg`,
-  `${base}assets/images/heart1.jpg`,
-  `${base}assets/images/smile1.jpg`,
+  `${base}assets/images/star1.webp`,
+  `${base}assets/images/heart1.webp`,
+  `${base}assets/images/smile1.webp`,
 ];
 
 const rightImages = [
-  `${base}assets/images/star2.jpg`,
-  `${base}assets/images/heart2.jpg`,
-  `${base}assets/images/smile2.jpg`,
+  `${base}assets/images/star2.webp`,
+  `${base}assets/images/heart2.webp`,
+  `${base}assets/images/smile2.webp`,
 ];
 ---
 
@@ -41,6 +42,6 @@ const rightImages = [
   <!-- Mobile: Bottom floating images -->
   <FloatingImages images={rightImages} position="bottom" />
   
-  <!-- Center message with small GIF background -->
-  <CenterMessage message="Animos Yuli <3" centerGifSrc={centerGif} />
+  <!-- Center message with small GIF background and special popup -->
+  <CenterMessage message="Animos Yuli <3" centerGifSrc={centerGif} specialImageSrc={specialImage} />
 </MainLayout>
