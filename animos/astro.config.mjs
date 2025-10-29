@@ -3,5 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://Joscart.github.io'
+  site: 'https://Joscart.github.io',
+  build: {
+    assets: 'assets', // optional, if customizing
+  }
 });
