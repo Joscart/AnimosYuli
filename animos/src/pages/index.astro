@@ -4,21 +4,24 @@ import BackgroundGif from '../components/BackgroundGif.astro';
 import FloatingImages from '../components/FloatingImages.astro';
 import CenterMessage from '../components/CenterMessage.astro';
 
+// Get the base URL for GitHub Pages (includes trailing slash)
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
 // Placeholder paths - Users should replace these with actual images/gifs
-const backgroundGif = '/assets/gifs/background.gif';
-const centerGif = '/assets/gifs/center.gif';
+const backgroundGif = `${base}assets/gifs/background.gif`;
+const centerGif = `${base}assets/gifs/center.gif`;
 
 // Example placeholder images - Users should add their own images to /public/assets/images/
 const leftImages = [
-  '/assets/images/star1.jpg',
-  '/assets/images/heart1.jpg',
-  '/assets/images/smile1.jpg',
+  `${base}assets/images/star1.jpg`,
+  `${base}assets/images/heart1.jpg`,
+  `${base}assets/images/smile1.jpg`,
 ];
 
 const rightImages = [
-  '/assets/images/star2.jpg',
-  '/assets/images/heart2.jpg',
-  '/assets/images/smile2.jpg',
+  `${base}assets/images/star2.jpg`,
+  `${base}assets/images/heart2.jpg`,
+  `${base}assets/images/smile2.jpg`,
 ];
 ---
 
