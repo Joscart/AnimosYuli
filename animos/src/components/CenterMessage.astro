@@ -1,0 +1,126 @@
+---
+interface Props {
+  message?: string;
+  centerGifSrc: string;
+}
+
+const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
+---
+
+<div class="center-content">
+  <div class="message-container">
+    <div class="gif-background">
+      <img src={centerGifSrc} alt="Center GIF" />
+    </div>
+    <h1 class="message">{message}</h1>
+  </div>
+</div>
+
+<style>
+  .center-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .message-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .gif-background {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    z-index: -1;
+    opacity: 0.4;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .gif-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .message {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(
+      45deg,
+      #ff6b9d,
+      #c56cf0,
+      #4facfe,
+      #00f2fe,
+      #ff6b9d
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: gradient-shift 5s ease infinite;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .message {
+      font-size: 2rem;
+    }
+
+    .message-container {
+      padding: 1.5rem 2rem;
+    }
+
+    .gif-background {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .message {
+      font-size: 1.5rem;
+    }
+
+    .message-container {
+      padding: 1rem 1.5rem;
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 8px 32px rgba(255, 107, 157, 0.3),
+                  0 0 20px rgba(197, 108, 240, 0.2);
+    }
+    50% {
+      box-shadow: 0 8px 32px rgba(255, 107, 157, 0.5),
+                  0 0 40px rgba(197, 108, 240, 0.4);
+    }
+  }
+</style>

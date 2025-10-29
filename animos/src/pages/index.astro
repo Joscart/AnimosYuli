@@ -1,0 +1,43 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import BackgroundGif from '../components/BackgroundGif.astro';
+import FloatingImages from '../components/FloatingImages.astro';
+import CenterMessage from '../components/CenterMessage.astro';
+
+// Placeholder paths - Users should replace these with actual images/gifs
+const backgroundGif = '/assets/gifs/background.gif';
+const centerGif = '/assets/gifs/center.gif';
+
+// Example placeholder images - Users should add their own images to /public/assets/images/
+const leftImages = [
+  '/assets/images/star1.jpg',
+  '/assets/images/heart1.jpg',
+  '/assets/images/smile1.jpg',
+];
+
+const rightImages = [
+  '/assets/images/star2.jpg',
+  '/assets/images/heart2.jpg',
+  '/assets/images/smile2.jpg',
+];
+---
+
+<MainLayout title="Animos Yuli <3">
+  <!-- Full-screen background GIF -->
+  <BackgroundGif gifSrc={backgroundGif} />
+  
+  <!-- Desktop: Left side floating images -->
+  <FloatingImages images={leftImages} position="left" />
+  
+  <!-- Desktop: Right side floating images -->
+  <FloatingImages images={rightImages} position="right" />
+  
+  <!-- Mobile: Top floating images -->
+  <FloatingImages images={leftImages} position="top" />
+  
+  <!-- Mobile: Bottom floating images -->
+  <FloatingImages images={rightImages} position="bottom" />
+  
+  <!-- Center message with small GIF background -->
+  <CenterMessage message="Animos Yuli <3" centerGifSrc={centerGif} />
+</MainLayout>

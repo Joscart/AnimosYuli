@@ -1,0 +1,112 @@
+---
+interface Props {
+  images: string[];
+  position: 'left' | 'right' | 'top' | 'bottom';
+}
+
+const { images, position } = Astro.props;
+---
+
+<div class={`floating-container ${position}`}>
+  {images.map((imgSrc, index) => (
+    <div 
+      class="floating-image" 
+      style={`
+        animation-delay: ${index * 0.5}s;
+        top: ${Math.random() * 80}%;
+        left: ${Math.random() * 80}%;
+      `}
+    >
+      <img src={imgSrc} alt={`Animated ${index + 1}`} />
+    </div>
+  ))}
+</div>
+
+<style>
+  .floating-container {
+    position: fixed;
+    z-index: 1;
+  }
+
+  /* Desktop - Lateral boxes */
+  .floating-container.left {
+    left: 0;
+    top: 0;
+    width: 25vw;
+    height: 100vh;
+  }
+
+  .floating-container.right {
+    right: 0;
+    top: 0;
+    width: 25vw;
+    height: 100vh;
+  }
+
+  /* Mobile - Top and bottom boxes */
+  .floating-container.top {
+    display: none;
+  }
+
+  .floating-container.bottom {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .floating-container.left,
+    .floating-container.right {
+      display: none;
+    }
+
+    .floating-container.top {
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 25vh;
+    }
+
+    .floating-container.bottom {
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 25vh;
+    }
+  }
+
+  .floating-image {
+    position: absolute;
+    animation: float-and-scale 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .floating-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  @media (max-width: 768px) {
+    .floating-image img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  @keyframes float-and-scale {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    25% {
+      transform: translateY(-15px) scale(1.1);
+    }
+    50% {
+      transform: translateY(0) scale(1.2);
+    }
+    75% {
+      transform: translateY(-10px) scale(1.1);
+    }
+  }
+</style>
