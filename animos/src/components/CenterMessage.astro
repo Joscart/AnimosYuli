@@ -8,13 +8,60 @@ const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
 ---
 
 <div class="center-content">
-  <div class="message-container">
+  <div class="message-container" id="messageBox">
     <div class="gif-background">
       <img src={centerGifSrc} alt="Center GIF" />
     </div>
     <h1 class="message">{message}</h1>
   </div>
 </div>
+
+<script>
+  const messageBox = document.getElementById('messageBox');
+  
+  if (messageBox) {
+    messageBox.addEventListener('click', () => {
+      // Get box dimensions and position
+      const rect = messageBox.getBoundingClientRect();
+      const heartEmojis = ['💖', '💕', '💗', '💓', '💝', '❤️', '💘'];
+      
+      // Create multiple hearts around the edges
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        
+        // Random position on the edge of the box
+        const angle = (i / 12) * Math.PI * 2;
+        const distance = 0; // Start from the edge
+        
+        const startX = rect.left + rect.width / 2 + Math.cos(angle) * (rect.width / 2);
+        const startY = rect.top + rect.height / 2 + Math.sin(angle) * (rect.height / 2);
+        
+        heart.style.left = `${startX}px`;
+        heart.style.top = `${startY}px`;
+        
+        // Random animation duration
+        const duration = 1 + Math.random() * 0.5;
+        heart.style.animationDuration = `${duration}s`;
+        
+        // Calculate direction for outward movement
+        const endX = startX + Math.cos(angle) * 150;
+        const endY = startY + Math.sin(angle) * 150;
+        
+        heart.style.setProperty('--end-x', `${endX - startX}px`);
+        heart.style.setProperty('--end-y', `${endY - startY}px`);
+        
+        document.body.appendChild(heart);
+        
+        // Remove after animation
+        setTimeout(() => {
+          heart.remove();
+        }, duration * 1000);
+      }
+    });
+  }
+</script>
 
 <style>
   .center-content {
@@ -40,6 +87,16 @@ const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.3);
     animation: pulse-glow 3s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .message-container:hover {
+    transform: scale(1.05);
+  }
+
+  .message-container:active {
+    transform: scale(0.98);
   }
 
   .gif-background {
@@ -121,6 +178,30 @@ const { message = "Animos Yuli <3", centerGifSrc } = Astro.props;
     50% {
       box-shadow: 0 8px 32px rgba(255, 107, 157, 0.5),
                   0 0 40px rgba(197, 108, 240, 0.4);
+    }
+  }
+
+  .floating-heart {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 1000;
+    animation: float-away 1.5s ease-out forwards;
+    opacity: 1;
+  }
+
+  @keyframes float-away {
+    0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+      transform: translate(var(--end-x), var(--end-y)) scale(1.5) rotate(180deg);
+    }
+    100% {
+      transform: translate(var(--end-x), var(--end-y)) scale(0.5) rotate(360deg);
+      opacity: 0;
     }
   }
 </style>
