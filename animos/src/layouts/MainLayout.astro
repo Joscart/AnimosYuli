@@ -39,8 +39,10 @@ const { title = "Para ti, Yuli 💕" } = Astro.props;
         const container = document.getElementById('floatingHearts');
         if (!container) return;
         const emojis = ['💕', '💖', '💗', '🐹', '✨', '💝', '🌸', '💕', '⭐', '🐹'];
+        const isMobile = window.innerWidth <= 768;
+        const count = isMobile ? 12 : 30;
         
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < count; i++) {
           const heart = document.createElement('span');
           heart.className = 'bg-heart';
           heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
@@ -54,9 +56,10 @@ const { title = "Para ti, Yuli 💕" } = Astro.props;
       }
       createFloatingHearts();
 
-      // Cursor heart trail
+      // Cursor heart trail (desktop only)
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       const canvas = document.getElementById('cursorCanvas') as HTMLCanvasElement;
-      if (canvas) {
+      if (canvas && !isTouchDevice) {
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -121,15 +124,16 @@ const { title = "Para ti, Yuli 💕" } = Astro.props;
         }
       });
 
-      // Click sparkle effect anywhere
+      // Click sparkle effect (reduced on mobile)
       document.addEventListener('click', (e) => {
-        for (let i = 0; i < 8; i++) {
+        const sparkleCount = window.innerWidth <= 768 ? 4 : 8;
+        for (let i = 0; i < sparkleCount; i++) {
           const sparkle = document.createElement('span');
           sparkle.className = 'click-sparkle';
           sparkle.textContent = ['✨', '💖', '🐹', '💕', '⭐'][Math.floor(Math.random() * 5)];
           sparkle.style.left = e.pageX + 'px';
           sparkle.style.top = e.pageY + 'px';
-          const angle = (Math.PI * 2 * i) / 8;
+          const angle = (Math.PI * 2 * i) / sparkleCount;
           sparkle.style.setProperty('--dx', Math.cos(angle) * 60 + 'px');
           sparkle.style.setProperty('--dy', Math.sin(angle) * 60 + 'px');
           document.body.appendChild(sparkle);
@@ -183,6 +187,9 @@ const { title = "Para ti, Yuli 💕" } = Astro.props;
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--pink) var(--bg-primary);
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   html::-webkit-scrollbar { width: 8px; }
@@ -194,12 +201,17 @@ const { title = "Para ti, Yuli 💕" } = Astro.props;
     background: var(--bg-primary);
     color: var(--text-primary);
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-text-size-adjust: 100%;
   }
 
   #cursorCanvas {
     position: fixed;
     top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    width: 100vw; height: 100vh; height: 100dvh;
     pointer-events: none;
     z-index: 9999;
   }
@@ -313,6 +325,15 @@ const { title = "Para ti, Yuli 💕" } = Astro.props;
 
   @media (max-width: 768px) {
     .scroll-indicator p { font-size: 0.7rem; }
-    .section-title { font-size: 2.5rem; }
+    .section-title { font-size: 2.2rem; word-break: break-word; }
+    .section-subtitle { font-size: 1rem; }
+    #cursorCanvas { display: none !important; }
+    .click-sparkle { display: none !important; }
+    .kawaii-btn { padding: 14px 28px; font-size: 0.95rem; }
+  }
+
+  @media (max-width: 480px) {
+    .section-title { font-size: 1.8rem; }
+    .section-subtitle { font-size: 0.9rem; }
   }
 </style>

@@ -97,6 +97,7 @@ const promises = [
 <style>
   .promises-section {
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 80px 20px;
     background: linear-gradient(180deg, #0a0a0a 0%, #0f0a0e 50%, #0a0a0a 100%);
   }
@@ -225,14 +226,54 @@ const promises = [
   }
 
   @media (max-width: 768px) {
+    .promises-section {
+      padding: 60px 10px;
+    }
+    .promises-container {
+      padding: 0 5px;
+      gap: 12px;
+    }
     .promise-card {
-      padding: 14px 18px;
+      padding: 14px 16px;
+      gap: 12px;
     }
     .promise-text {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
     }
     .promise-icon {
       font-size: 1.4rem;
+    }
+    .promise-check {
+      width: 26px;
+      height: 26px;
+    }
+    .pinky-hamster-pair svg {
+      width: 180px;
+      height: 90px;
+    }
+    .pinky-text {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .promise-card {
+      padding: 12px 14px;
+      gap: 10px;
+    }
+    .promise-text {
+      font-size: 0.78rem;
+    }
+    .promise-icon {
+      font-size: 1.2rem;
+    }
+    .pinky-hamster-pair svg {
+      width: 150px;
+      height: 75px;
+    }
+    .pinky-text {
+      font-size: 0.95rem;
     }
   }
 </style>

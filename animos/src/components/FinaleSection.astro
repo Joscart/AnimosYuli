@@ -117,7 +117,8 @@
   // Generate stars for finale background
   const finaleStars = document.getElementById('finaleStars');
   if (finaleStars) {
-    for (let i = 0; i < 80; i++) {
+    const starCount = window.innerWidth <= 768 ? 35 : 80;
+    for (let i = 0; i < starCount; i++) {
       const star = document.createElement('span');
       star.className = 'finale-star';
       star.textContent = Math.random() > 0.5 ? '✦' : '·';
@@ -144,6 +145,7 @@
 <style>
   .finale-section {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -276,18 +278,54 @@
   }
 
   @media (max-width: 768px) {
+    .finale-section {
+      padding: 60px 15px;
+    }
+    .finale-content {
+      width: 100%;
+      padding: 0 5px;
+    }
     .finale-title {
       font-size: 1.5rem;
     }
     .finale-name {
-      font-size: 3rem;
+      font-size: 2.8rem;
     }
     .finale-poem-line {
       font-size: 0.85rem;
+      line-height: 1.8;
     }
     .finale-svg {
-      width: 220px;
-      height: 180px;
+      width: 240px;
+      height: 200px;
+    }
+    .finale-signature p {
+      font-size: 1.05rem;
+    }
+    .finale-sign-name {
+      font-size: 1.6rem;
+    }
+    .finale-date {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .finale-title {
+      font-size: 1.3rem;
+    }
+    .finale-name {
+      font-size: 2.4rem;
+    }
+    .finale-poem-line {
+      font-size: 0.78rem;
+    }
+    .finale-svg {
+      width: 200px;
+      height: 165px;
+    }
+    .finale-hamster-scene {
+      margin-bottom: 20px;
     }
   }
 </style>

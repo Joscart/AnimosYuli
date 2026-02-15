@@ -114,6 +114,7 @@ const reasons = [
 <style>
   .reasons-section {
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 80px 20px;
     background: linear-gradient(180deg, #0a0a0a 0%, #100a12 50%, #0a0a0a 100%);
   }
@@ -280,21 +281,49 @@ const reasons = [
   }
 
   @media (max-width: 768px) {
+    .reasons-section {
+      padding: 60px 10px;
+    }
     .reasons-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
+      padding: 0 5px;
+      width: 100%;
     }
     .reason-text {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
+      line-height: 1.4;
     }
     .reason-emoji {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .reason-front,
+    .reason-back {
+      padding: 10px;
+    }
+    .reason-question {
+      font-size: 1.6rem;
+    }
+    .celebration-text {
+      font-size: 2rem;
+    }
+    .celebration-subtext {
+      font-size: 1rem;
+      padding: 0 20px;
     }
   }
 
   @media (max-width: 480px) {
     .reasons-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .reason-text {
+      font-size: 0.65rem;
+    }
+    .reason-emoji {
+      font-size: 1.1rem;
     }
   }
 </style>

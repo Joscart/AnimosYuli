@@ -163,14 +163,35 @@ const navItems = [
   }
 
   @media (max-width: 768px) {
+    .nav-inner {
+      justify-content: flex-start;
+      padding: 6px 8px;
+      gap: 2px;
+      width: 100%;
+    }
     .nav-item {
-      padding: 4px 8px;
+      padding: 5px 7px;
+      min-width: 0;
+      flex-shrink: 0;
     }
     .nav-emoji {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
     .nav-label {
-      font-size: 0.5rem;
+      font-size: 0.45rem;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-item {
+      padding: 4px 6px;
+    }
+    .nav-emoji {
+      font-size: 0.8rem;
+    }
+    .nav-label {
+      font-size: 0.4rem;
     }
   }
 </style>

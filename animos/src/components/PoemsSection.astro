@@ -212,10 +212,14 @@ const poems = [
   const dots = document.querySelectorAll('.poems-dot');
 
   if (carousel) {
+    // Update active dot on scroll
     carousel.addEventListener('scroll', () => {
       const scrollLeft = carousel.scrollLeft;
-      const cardWidth = carousel.querySelector('.poem-card')?.clientWidth || 300;
-      const gap = 24;
+      const cards = carousel.querySelectorAll('.poem-card');
+      const firstCard = cards[0] as HTMLElement;
+      if (!firstCard) return;
+      const cardWidth = firstCard.offsetWidth;
+      const gap = parseInt(getComputedStyle(carousel).gap) || 24;
       const index = Math.round(scrollLeft / (cardWidth + gap));
       
       dots.forEach((dot, i) => {
@@ -226,8 +230,11 @@ const poems = [
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
         const index = Number(dot.getAttribute('data-index'));
-        const cardWidth = carousel.querySelector('.poem-card')?.clientWidth || 300;
-        const gap = 24;
+        const cards = carousel.querySelectorAll('.poem-card');
+        const firstCard = cards[0] as HTMLElement;
+        if (!firstCard) return;
+        const cardWidth = firstCard.offsetWidth;
+        const gap = parseInt(getComputedStyle(carousel).gap) || 24;
         carousel.scrollTo({
           left: index * (cardWidth + gap),
           behavior: 'smooth'
@@ -240,6 +247,7 @@ const poems = [
 <style>
   .poems-section {
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 80px 20px;
     background: linear-gradient(180deg, #0a0a0a 0%, #0f0812 50%, #0a0a0a 100%);
     position: relative;
@@ -448,15 +456,49 @@ const poems = [
   }
 
   @media (max-width: 768px) {
+    .poems-section {
+      padding: 60px 10px;
+    }
+    .poems-carousel {
+      padding: 10px 15px;
+      gap: 16px;
+    }
     .poem-card {
-      flex: 0 0 280px;
+      flex: 0 0 calc(100vw - 60px);
       height: 420px;
     }
     .section-title {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
     .poem-line {
       font-size: 0.8rem;
+    }
+    .poem-card-front,
+    .poem-card-back {
+      padding: 20px;
+    }
+    .poem-card-title {
+      font-size: 1.3rem;
+    }
+    .poems-header {
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .poem-card {
+      flex: 0 0 calc(100vw - 40px);
+      height: 400px;
+    }
+    .poem-line {
+      font-size: 0.75rem;
+      line-height: 1.7;
+    }
+    .poem-card-emoji {
+      font-size: 2.2rem;
+    }
+    .poem-card-title {
+      font-size: 1.15rem;
     }
   }
 </style>

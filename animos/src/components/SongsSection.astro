@@ -99,6 +99,7 @@ const songs = [
 <style>
   .songs-section {
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 80px 20px;
     background: linear-gradient(180deg, #0a0a0a 0%, #0e080f 50%, #0a0a0a 100%);
   }
@@ -225,14 +226,50 @@ const songs = [
   }
 
   @media (max-width: 768px) {
+    .songs-section {
+      padding: 60px 10px;
+    }
+    .songs-grid {
+      padding: 0 5px;
+      gap: 20px;
+    }
     .song-card {
-      padding: 18px;
+      padding: 16px;
     }
     .song-number {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
     .song-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+    }
+    .song-artist {
+      font-size: 0.8rem;
+    }
+    .song-why {
+      font-size: 0.8rem;
+    }
+    .song-info {
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .songs-note {
+      font-size: 0.95rem;
+      padding: 0 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .song-card {
+      padding: 14px;
+    }
+    .song-number {
+      font-size: 1.5rem;
+    }
+    .song-title {
+      font-size: 0.95rem;
+    }
+    .song-why {
+      font-size: 0.75rem;
     }
   }
 </style>
