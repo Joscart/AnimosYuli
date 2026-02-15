@@ -1,0 +1,277 @@
+---
+// Hamster gallery - cute kawaii hamster collection
+const hamsters = [
+  { name: "Hamster Enamorado", accessory: "heart", expression: "love" },
+  { name: "Hamster Dormilón", accessory: "zzz", expression: "sleep" },
+  { name: "Hamster Feliz", accessory: "star", expression: "happy" },
+  { name: "Hamster Tímido", accessory: "flower", expression: "shy" },
+  { name: "Hamster Aventurero", accessory: "crown", expression: "cool" },
+  { name: "Hamster Poetisa", accessory: "book", expression: "think" },
+];
+---
+
+<section class="hamster-section" id="hamsterSection">
+  <div class="hamster-header reveal">
+    <h2 class="section-title">
+      <span class="title-deco">🌸</span>
+      Familia Hamster
+      <span class="title-deco">🌸</span>
+    </h2>
+    <p class="section-subtitle">¡Toca cada hamster para que haga algo tierno! 🐹</p>
+  </div>
+
+  <div class="hamster-gallery">
+    {hamsters.map((hamster, index) => (
+      <div class="hamster-item reveal-scale" data-expression={hamster.expression} style={`animation-delay: ${index * 0.1}s`}>
+        <div class="hamster-bubble" id={`bubble-${index}`}></div>
+        <div class="hamster-svg-container">
+          <svg viewBox="0 0 160 180" width="140" height="160" class="hamster-character">
+            <!-- Body -->
+            <ellipse cx="80" cy="120" rx="42" ry="35" fill="#f4d4a0" stroke="#e8c080" stroke-width="1.5"/>
+            <!-- Belly -->
+            <ellipse cx="80" cy="128" rx="26" ry="22" fill="#fef0d6"/>
+            <!-- Head -->
+            <circle cx="80" cy="72" r="35" fill="#f4d4a0" stroke="#e8c080" stroke-width="1.5"/>
+            <!-- Left ear -->
+            <ellipse cx="52" cy="45" rx="14" ry="18" fill="#f4d4a0" stroke="#e8c080" stroke-width="1.5"/>
+            <ellipse cx="52" cy="45" rx="8" ry="11" fill="#ffb6c1"/>
+            <!-- Right ear -->
+            <ellipse cx="108" cy="45" rx="14" ry="18" fill="#f4d4a0" stroke="#e8c080" stroke-width="1.5"/>
+            <ellipse cx="108" cy="45" rx="8" ry="11" fill="#ffb6c1"/>
+            
+            {/* Eyes based on expression */}
+            {hamster.expression === 'love' && (
+              <>
+                <text x="58" y="75" font-size="16" class="hamster-eye">💖</text>
+                <text x="86" y="75" font-size="16" class="hamster-eye">💖</text>
+              </>
+            )}
+            {hamster.expression === 'sleep' && (
+              <>
+                <path d="M 60 70 Q 68 64 76 70" fill="none" stroke="#2c2c2c" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M 84 70 Q 92 64 100 70" fill="none" stroke="#2c2c2c" stroke-width="2.5" stroke-linecap="round"/>
+              </>
+            )}
+            {hamster.expression === 'happy' && (
+              <>
+                <circle cx="65" cy="68" r="6" fill="#2c2c2c"/>
+                <circle cx="63" cy="66" r="2.5" fill="#ffffff"/>
+                <circle cx="95" cy="68" r="6" fill="#2c2c2c"/>
+                <circle cx="93" cy="66" r="2.5" fill="#ffffff"/>
+              </>
+            )}
+            {hamster.expression === 'shy' && (
+              <>
+                <circle cx="65" cy="68" r="5" fill="#2c2c2c"/>
+                <circle cx="63" cy="66" r="2" fill="#ffffff"/>
+                <circle cx="95" cy="68" r="5" fill="#2c2c2c"/>
+                <circle cx="93" cy="66" r="2" fill="#ffffff"/>
+                <!-- Extra blush -->
+                <ellipse cx="55" cy="80" rx="10" ry="5" fill="#ff8fab" opacity="0.5"/>
+                <ellipse cx="105" cy="80" rx="10" ry="5" fill="#ff8fab" opacity="0.5"/>
+              </>
+            )}
+            {hamster.expression === 'cool' && (
+              <>
+                <circle cx="65" cy="68" r="6" fill="#2c2c2c"/>
+                <circle cx="62" cy="65" r="2.5" fill="#ffffff"/>
+                <circle cx="67" cy="70" r="1" fill="#ffffff"/>
+                <circle cx="95" cy="68" r="6" fill="#2c2c2c"/>
+                <circle cx="92" cy="65" r="2.5" fill="#ffffff"/>
+                <circle cx="97" cy="70" r="1" fill="#ffffff"/>
+              </>
+            )}
+            {hamster.expression === 'think' && (
+              <>
+                <circle cx="65" cy="68" r="5" fill="#2c2c2c"/>
+                <circle cx="63" cy="66" r="2" fill="#ffffff"/>
+                <circle cx="95" cy="70" r="5" fill="#2c2c2c"/>
+                <circle cx="93" cy="68" r="2" fill="#ffffff"/>
+              </>
+            )}
+            
+            <!-- Nose -->
+            <ellipse cx="80" cy="80" rx="3" ry="2.5" fill="#ffb6c1"/>
+            <!-- Mouth -->
+            <path d="M 73 85 Q 80 92 87 85" fill="none" stroke="#e8a080" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Blush -->
+            <ellipse cx="55" cy="80" rx="8" ry="5" fill="#ffb6c1" opacity="0.4"/>
+            <ellipse cx="105" cy="80" rx="8" ry="5" fill="#ffb6c1" opacity="0.4"/>
+            <!-- Cheeks (full of food!) -->
+            <ellipse cx="48" cy="72" rx="10" ry="8" fill="#f0d090" opacity="0.5"/>
+            <ellipse cx="112" cy="72" rx="10" ry="8" fill="#f0d090" opacity="0.5"/>
+            <!-- Left paw -->
+            <ellipse cx="50" cy="140" rx="10" ry="7" fill="#f4d4a0" stroke="#e8c080" stroke-width="1"/>
+            <!-- Right paw -->
+            <ellipse cx="110" cy="140" rx="10" ry="7" fill="#f4d4a0" stroke="#e8c080" stroke-width="1"/>
+            <!-- Tiny tail -->
+            <circle cx="120" cy="115" r="5" fill="#f4d4a0"/>
+            
+            {/* Accessories */}
+            {hamster.accessory === 'heart' && <text x="66" y="30" font-size="18">💕</text>}
+            {hamster.accessory === 'zzz' && <text x="95" y="40" font-size="14">💤</text>}
+            {hamster.accessory === 'star' && <text x="66" y="25" font-size="18">⭐</text>}
+            {hamster.accessory === 'flower' && <text x="98" y="38" font-size="16">🌸</text>}
+            {hamster.accessory === 'crown' && <text x="62" y="30" font-size="20">👑</text>}
+            {hamster.accessory === 'book' && <text x="54" y="150" font-size="16">📖</text>}
+          </svg>
+        </div>
+        <p class="hamster-name">{hamster.name}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const messages: Record<string, string[]> = {
+    love: ["¡Te quiero mucho, Yuli! 💕", "¡Eres hermosa! 🌸", "¡Mi corazón es tuyo! 💖"],
+    sleep: ["Zzz... soñando contigo... 💤", "5 minutitos más... 😴", "Soñé que eras un girasol 🌻"],
+    happy: ["¡Yuli es la mejor! ⭐", "¡Squeak squeak! 🐹", "¡Hoy es un gran día! ✨"],
+    shy: ["U-umm... eres muy bonita... 🌸", "*se esconde* 👉👈", "T-te hice este poema... 💕"],
+    cool: ["😎 Yuli es la más cool", "¡Nada me detiene! 💪", "Soy el hamster más genial 🐹"],
+    think: ["Hmm... pensando en Yuli 💭", "¿Sabías que eres increíble? 📖", "Escribiendo poemas para ti ✍️"],
+  };
+
+  document.querySelectorAll('.hamster-item').forEach((item, index) => {
+    item.addEventListener('click', () => {
+      const expression = item.getAttribute('data-expression') || 'happy';
+      const msgs = messages[expression] || messages.happy;
+      const msg = msgs[Math.floor(Math.random() * msgs.length)];
+      
+      const bubble = document.getElementById(`bubble-${index}`);
+      if (bubble) {
+        bubble.textContent = msg;
+        bubble.classList.add('show');
+        
+        // Bounce animation
+        item.classList.add('bounce');
+        setTimeout(() => item.classList.remove('bounce'), 600);
+        
+        setTimeout(() => {
+          bubble.classList.remove('show');
+        }, 2500);
+      }
+    });
+  });
+</script>
+
+<style>
+  .hamster-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0e0a10 50%, #0a0a0a 100%);
+  }
+
+  .hamster-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .hamster-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hamster-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1018, #0f080d);
+    border: 1px solid rgba(255, 105, 180, 0.15);
+    border-radius: 20px;
+  }
+
+  .hamster-item:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.2);
+  }
+
+  .hamster-item.bounce {
+    animation: hamsterBounceClick 0.6s ease;
+  }
+
+  @keyframes hamsterBounceClick {
+    0% { transform: scale(1); }
+    30% { transform: scale(0.9); }
+    50% { transform: scale(1.1); }
+    70% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+
+  .hamster-svg-container {
+    transition: transform 0.3s;
+  }
+
+  .hamster-item:hover .hamster-svg-container {
+    transform: scale(1.05);
+  }
+
+  .hamster-character {
+    filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.15));
+  }
+
+  .hamster-name {
+    font-family: var(--font-handwrite);
+    color: var(--pink-light);
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .hamster-bubble {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    background: var(--bg-card);
+    border: 1px solid var(--pink);
+    border-radius: 15px;
+    padding: 8px 16px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--pink-light);
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+  }
+
+  .hamster-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--pink);
+  }
+
+  .hamster-bubble.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) translateY(-10px);
+  }
+
+  @media (max-width: 768px) {
+    .hamster-gallery {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .hamster-character {
+      width: 100px;
+      height: 120px;
+    }
+    .hamster-name {
+      font-size: 0.85rem;
+    }
+  }
+</style>

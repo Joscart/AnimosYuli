@@ -1,47 +1,24 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import BackgroundGif from '../components/BackgroundGif.astro';
-import FloatingImages from '../components/FloatingImages.astro';
-import CenterMessage from '../components/CenterMessage.astro';
-
-// Get the base URL for GitHub Pages (includes trailing slash)
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
-
-// Placeholder paths - Users should replace these with actual images/gifs
-const backgroundGif = `${base}assets/gifs/background.gif`;
-const centerGif = `${base}assets/gifs/center.gif`;
-const specialImage = `${base}assets/images/special.webp`;
-
-// Example placeholder images - Users should add their own images to /public/assets/images/
-const leftImages = [
-  `${base}assets/images/star1.webp`,
-  `${base}assets/images/heart1.webp`,
-  `${base}assets/images/smile1.webp`,
-];
-
-const rightImages = [
-  `${base}assets/images/star2.webp`,
-  `${base}assets/images/heart2.webp`,
-  `${base}assets/images/smile2.webp`,
-];
+import Navigation from '../components/Navigation.astro';
+import HeroSection from '../components/HeroSection.astro';
+import LoveLetter from '../components/LoveLetter.astro';
+import PoemsSection from '../components/PoemsSection.astro';
+import ReasonsSection from '../components/ReasonsSection.astro';
+import TimelineSection from '../components/TimelineSection.astro';
+import SongsSection from '../components/SongsSection.astro';
+import PromisesSection from '../components/PromisesSection.astro';
+import FinaleSection from '../components/FinaleSection.astro';
 ---
 
-<MainLayout title="Animos Yuli <3">
-  <!-- Full-screen background GIF -->
-  <BackgroundGif gifSrc={backgroundGif} />
-  
-  <!-- Desktop: Left side floating images -->
-  <FloatingImages images={leftImages} position="left" />
-  
-  <!-- Desktop: Right side floating images -->
-  <FloatingImages images={rightImages} position="right" />
-  
-  <!-- Mobile: Top floating images -->
-  <FloatingImages images={leftImages} position="top" />
-  
-  <!-- Mobile: Bottom floating images -->
-  <FloatingImages images={rightImages} position="bottom" />
-  
-  <!-- Center message with small GIF background and special popup -->
-  <CenterMessage message="Animos Yuli <3" centerGifSrc={centerGif} specialImageSrc={specialImage} />
+<MainLayout title="Para ti, Mi Yuli 💕">
+  <Navigation />
+  <HeroSection />
+  <LoveLetter />
+  <PoemsSection />
+  <ReasonsSection />
+  <TimelineSection />
+  <SongsSection />
+  <PromisesSection />
+  <FinaleSection />
 </MainLayout>

@@ -1,0 +1,300 @@
+---
+// Reasons I love you - interactive grid
+const reasons = [
+  { emoji: "🎙️", text: "Esa vocecita tan dulce, divina, celestial, que me derrite todito cada vez" },
+  { emoji: "✨", text: "Tus manías bonitas que son parte de tu ser y que me parecen lo más tierno del mundo" },
+  { emoji: "🌙", text: "Las noches larguitas de conversación donde el tiempo se olvida de existir" },
+  { emoji: "☕", text: "Que tus ojitos tienen el color del cafecito que más me gusta saborear" },
+  { emoji: "🦋", text: "Que eres noble hasta cuando te cuesta, y eso es lo más valiente que conozco" },
+  { emoji: "📖", text: "Que me inspiras a querer aprender a querer bonito, no solo querer" },
+  { emoji: "🌸", text: "Tu sonrisa, que es como un jardincito que florece cada vez que apareces" },
+  { emoji: "💪", text: "Que no te rindes, aunque el mundo pese, y sigues caminando con esa fuerza tan bonita" },
+  { emoji: "🌈", text: "Que contigo este loquito encuentra un poquito de paz entre tanto ruido" },
+  { emoji: "🌍", text: "Que la distancia se vuelve chiquitita cuando escucho tu risita" },
+  { emoji: "🔥", text: "Que me nace querer ser mejorcito, no por obligación, sino por lo bonito que siento" },
+  { emoji: "🎵", text: "Que cada melodía bonita me susurra tu nombre despacito" },
+  { emoji: "💕", text: "Que hacerte feliz se convirtió en la cosita más bonita de mis días" },
+  { emoji: "🌱", text: "Que sin saberlo me enseñas que el amor también es crecer juntitos, despacito" },
+  { emoji: "🏠", text: "Que contigo todo se siente como llegar a casita después de un día largo" },
+  { emoji: "💖", text: "Que existes, mi niña, y que este tontito no deja de dar gracias por eso" },
+];
+---
+
+<section class="reasons-section" id="reasonsSection">
+  <div class="reasons-header reveal">
+    <h2 class="section-title">
+      <span class="title-deco">💖</span>
+      Por Qué Me Encantas
+      <span class="title-deco">💖</span>
+    </h2>
+    <p class="section-subtitle">Toca cada corazoncito para descubrir 💕</p>
+    <div class="reasons-counter">
+      <span id="revealedCount">0</span> / {reasons.length} razones descubiertas
+    </div>
+  </div>
+
+  <div class="reasons-grid">
+    {reasons.map((reason, index) => (
+      <div class="reason-card reveal-scale" data-index={index} style={`animation-delay: ${index * 0.05}s`}>
+        <div class="reason-front">
+          <span class="reason-question">?</span>
+          <div class="reason-heart-bg">💖</div>
+        </div>
+        <div class="reason-back">
+          <span class="reason-emoji">{reason.emoji}</span>
+          <p class="reason-text">{reason.text}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- All revealed celebration -->
+  <div class="all-revealed" id="allRevealed">
+    <div class="celebration-content">
+      <div class="celebration-hamster">
+        <svg viewBox="0 0 180 120" width="160" height="100">
+          <!-- Hamster (her) -->
+          <circle cx="50" cy="65" r="28" fill="#f4d4a0"/>
+          <ellipse cx="30" cy="42" rx="8" ry="11" fill="#f4d4a0"/>
+          <ellipse cx="30" cy="42" rx="5" ry="7" fill="#ffb6c1"/>
+          <ellipse cx="70" cy="42" rx="8" ry="11" fill="#f4d4a0"/>
+          <ellipse cx="70" cy="42" rx="5" ry="7" fill="#ffb6c1"/>
+          <text x="35" y="63" font-size="11">⭐</text>
+          <text x="53" y="63" font-size="11">⭐</text>
+          <ellipse cx="50" cy="70" rx="2.5" ry="2" fill="#ffb6c1"/>
+          <path d="M 42 74 Q 50 80 58 74" fill="none" stroke="#e8a080" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="35" y="32" font-size="16">👑</text>
+          
+          <!-- Heart between them -->
+          <text x="80" y="70" font-size="22">💕</text>
+          
+          <!-- Cat (him) -->
+          <ellipse cx="130" cy="67" rx="25" ry="22" fill="#3a3a3a"/>
+          <polygon points="108,48 114,30 122,48" fill="#3a3a3a"/>
+          <polygon points="110,46 115,34 120,46" fill="#ffb6c1"/>
+          <polygon points="138,48 146,30 152,48" fill="#3a3a3a"/>
+          <polygon points="140,46 145,34 150,46" fill="#ffb6c1"/>
+          <circle cx="122" cy="62" r="3.5" fill="#7dcea0"/>
+          <circle cx="122" cy="61.5" r="1.8" fill="#1a1a1a"/>
+          <circle cx="138" cy="62" r="3.5" fill="#7dcea0"/>
+          <circle cx="138" cy="61.5" r="1.8" fill="#1a1a1a"/>
+          <ellipse cx="130" cy="68" rx="2.5" ry="1.5" fill="#ffb6c1"/>
+          <path d="M 122 72 Q 126 70 130 72 Q 134 70 138 72" fill="none" stroke="#888" stroke-width="1"/>
+        </svg>
+      </div>
+      <p class="celebration-text">¡Las encontraste toditas! 🎉</p>
+      <p class="celebration-subtext">Pero en realidad son infinitas... y sigo descubriendo más cada día, corazón 💕</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  let revealedCount = 0;
+  const totalCards = document.querySelectorAll('.reason-card').length;
+  const counter = document.getElementById('revealedCount');
+
+  document.querySelectorAll('.reason-card').forEach(card => {
+    card.addEventListener('click', () => {
+      if (!card.classList.contains('revealed')) {
+        card.classList.add('revealed');
+        revealedCount++;
+        if (counter) counter.textContent = String(revealedCount);
+
+        // Check if all revealed
+        if (revealedCount >= totalCards) {
+          setTimeout(() => {
+            document.getElementById('allRevealed')?.classList.add('show');
+          }, 500);
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .reasons-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #100a12 50%, #0a0a0a 100%);
+  }
+
+  .reasons-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .reasons-counter {
+    font-family: var(--font-handwrite);
+    color: var(--pink-light);
+    font-size: 1rem;
+    margin-top: 15px;
+  }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .reason-card {
+    aspect-ratio: 1;
+    perspective: 800px;
+    cursor: pointer;
+  }
+
+  .reason-front,
+  .reason-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s;
+    padding: 15px;
+  }
+
+  .reason-front {
+    background: linear-gradient(135deg, #1a1018, #12080f);
+    border: 2px solid rgba(255, 105, 180, 0.2);
+    overflow: hidden;
+  }
+
+  .reason-front:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
+  }
+
+  .reason-question {
+    font-family: var(--font-handwrite);
+    font-size: 2rem;
+    color: var(--pink);
+    z-index: 1;
+  }
+
+  .reason-heart-bg {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.15;
+    animation: heartPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .reason-back {
+    background: linear-gradient(135deg, #1a0a18, #0f0812);
+    border: 2px solid var(--pink);
+    transform: rotateY(180deg);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
+  }
+
+  .reason-card.revealed .reason-front {
+    transform: rotateY(180deg);
+  }
+
+  .reason-card.revealed .reason-back {
+    transform: rotateY(360deg);
+  }
+
+  .reason-emoji {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .reason-text {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Celebration overlay */
+  .all-revealed {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .all-revealed.show {
+    display: flex;
+    animation: celebrationIn 0.5s ease-out;
+  }
+
+  @keyframes celebrationIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .celebration-content {
+    text-align: center;
+    animation: bounceIn 0.6s ease-out;
+  }
+
+  @keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .celebration-hamster {
+    margin-bottom: 20px;
+    animation: hamsterDance 1s ease-in-out infinite;
+  }
+
+  @keyframes hamsterDance {
+    0%, 100% { transform: rotate(-10deg) scale(1); }
+    25% { transform: rotate(10deg) scale(1.1); }
+    50% { transform: rotate(-10deg) scale(1); }
+    75% { transform: rotate(10deg) scale(1.1); }
+  }
+
+  .celebration-text {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--pink);
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    margin-bottom: 15px;
+  }
+
+  .celebration-subtext {
+    font-family: var(--font-handwrite);
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .all-revealed.show {
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .reasons-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .reason-text {
+      font-size: 0.65rem;
+    }
+    .reason-emoji {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .reasons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,354 @@
+---
+// Love letter section - a heartfelt letter that reveals on scroll
+---
+
+<section class="love-letter-section" id="loveLetterSection">
+  <div class="letter-container">
+    <div class="envelope reveal-scale" id="envelope">
+      <div class="envelope-flap"></div>
+      <div class="envelope-body">
+        <span class="envelope-heart">💌</span>
+        <p class="envelope-text">Toca para abrir</p>
+      </div>
+    </div>
+
+    <div class="letter-paper" id="letterPaper">
+      <div class="letter-header">
+        <div class="letter-deco-left">🌸 ✨ 🌸</div>
+        <h2 class="letter-date">14 de Febrero, 2026</h2>
+        <div class="letter-deco-right">🌸 ✨ 🌸</div>
+      </div>
+
+      <div class="letter-body">
+        <p class="letter-greeting">Mi Yuli bonita,</p>
+        
+        <p class="letter-paragraph reveal-left">
+          Te conocí siendo un amiguito más, ansioso de jugar y conocer,
+          de crear lazos nuevos y vivir historias bonitas. Pero pasó
+          algo rarito... algo que no esperaba: empecé a sentir mariposas
+          donde antes solo había curiosidad. 💕
+        </p>
+
+        <p class="letter-paragraph reveal-right">
+          Eh de confesar que por más que pasamos tiempo juntitos,
+          hay tanto de tu ser que quiero seguir descubriendo despacito,
+          sin forzar nada, porque lo que es hermoso se cuida con
+          paciencia y con cariñito. ✨
+        </p>
+
+        <p class="letter-paragraph reveal-left">
+          Este loquito que te escribe está aprendiendo que amar bonito
+          no es solo sentir, sino también respetar tu caminito.
+          Y aunque a veces la distancia se siente grandecita,
+          tu vocecita la hace chiquitita en un instante. 🌸
+        </p>
+
+        <p class="letter-paragraph reveal-right">
+          Siendo tu amigo soy feliz, mi niña, pero hay algo más
+          que late fuertecito por aquí. No quiero molestarte con
+          mis maneras de rarito soñador... solo quiero que sepas
+          que todo lo que hago, lo hago queriendo bonito. 💖
+        </p>
+
+        <p class="letter-paragraph reveal-left">
+          Mi vida, desde lo más profundito de este corazoncito:
+          creo que ambos podríamos intentar algo bien bonito.
+          Pero si no, qué le puedo hacer... tus manías son parte
+          de tu ser y las adoro toditas, y la verdad no me molestaría
+          seguir aquí, cerquita, siendo lo que tú necesites. 💕
+        </p>
+
+        <p class="letter-closing reveal">
+          Con todo el cariño de este tontito,
+        </p>
+        <p class="letter-signature reveal">
+          Tu Josii 💕
+        </p>
+      </div>
+
+      <!-- Decorative hamsters on the letter -->
+      <div class="letter-hamster letter-hamster-left">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="25" fill="#f4d4a0"/>
+          <ellipse cx="25" cy="22" rx="8" ry="10" fill="#f4d4a0"/>
+          <ellipse cx="25" cy="22" rx="5" ry="6" fill="#ffb6c1"/>
+          <ellipse cx="55" cy="22" rx="8" ry="10" fill="#f4d4a0"/>
+          <ellipse cx="55" cy="22" rx="5" ry="6" fill="#ffb6c1"/>
+          <circle cx="32" cy="37" r="4" fill="#2c2c2c"/>
+          <circle cx="31" cy="36" r="1.5" fill="#fff"/>
+          <circle cx="48" cy="37" r="4" fill="#2c2c2c"/>
+          <circle cx="47" cy="36" r="1.5" fill="#fff"/>
+          <ellipse cx="40" cy="43" rx="2.5" ry="2" fill="#ffb6c1"/>
+          <path d="M 35 47 Q 40 52 45 47" fill="none" stroke="#e8a080" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="25" cy="43" rx="6" ry="4" fill="#ffb6c1" opacity="0.4"/>
+          <ellipse cx="55" cy="43" rx="6" ry="4" fill="#ffb6c1" opacity="0.4"/>
+          <!-- Tiny heart -->
+          <text x="38" y="18" font-size="10">💖</text>
+        </svg>
+      </div>
+
+      <div class="letter-hamster letter-hamster-right">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="25" fill="#f4d4a0"/>
+          <ellipse cx="25" cy="22" rx="8" ry="10" fill="#f4d4a0"/>
+          <ellipse cx="25" cy="22" rx="5" ry="6" fill="#ffb6c1"/>
+          <ellipse cx="55" cy="22" rx="8" ry="10" fill="#f4d4a0"/>
+          <ellipse cx="55" cy="22" rx="5" ry="6" fill="#ffb6c1"/>
+          <!-- Closed happy eyes -->
+          <path d="M 28 37 Q 32 33 36 37" fill="none" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"/>
+          <path d="M 44 37 Q 48 33 52 37" fill="none" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="40" cy="43" rx="2.5" ry="2" fill="#ffb6c1"/>
+          <path d="M 35 47 Q 40 52 45 47" fill="none" stroke="#e8a080" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="25" cy="43" rx="6" ry="4" fill="#ffb6c1" opacity="0.4"/>
+          <ellipse cx="55" cy="43" rx="6" ry="4" fill="#ffb6c1" opacity="0.4"/>
+          <text x="38" y="18" font-size="10">✨</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const envelope = document.getElementById('envelope');
+  const letterPaper = document.getElementById('letterPaper');
+
+  envelope?.addEventListener('click', () => {
+    envelope.classList.add('opened');
+    setTimeout(() => {
+      if (letterPaper) {
+        letterPaper.classList.add('visible');
+      }
+    }, 600);
+  });
+</script>
+
+<style>
+  .love-letter-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #120810 50%, #0a0a0a 100%);
+    position: relative;
+  }
+
+  .letter-container {
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Envelope */
+  .envelope {
+    width: 280px;
+    height: 180px;
+    margin: 0 auto 40px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.6s;
+    z-index: 2;
+  }
+
+  .envelope-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2a1520, #1a0a15);
+    border: 2px solid var(--pink);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
+    transition: all 0.3s;
+  }
+
+  .envelope:hover .envelope-body {
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.4);
+    transform: scale(1.02);
+  }
+
+  .envelope-flap {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    height: 90px;
+    background: linear-gradient(135deg, #2a1520, #1a0a15);
+    border: 2px solid var(--pink);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transition: all 0.6s;
+    transform-origin: top;
+    z-index: 1;
+  }
+
+  .envelope-heart {
+    font-size: 3rem;
+    animation: heartBeat 1.5s ease-in-out infinite;
+  }
+
+  .envelope-text {
+    font-family: var(--font-handwrite);
+    color: var(--pink-light);
+    font-size: 0.9rem;
+    margin-top: 8px;
+    animation: fadeInOut 2s ease-in-out infinite;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .envelope.opened {
+    transform: scale(0.8) translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .envelope.opened .envelope-flap {
+    transform: rotateX(180deg);
+  }
+
+  /* Letter paper */
+  .letter-paper {
+    background: linear-gradient(135deg, #1a1218, #0f0a0e);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    border-radius: 16px;
+    padding: 50px 40px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 0 40px rgba(255, 105, 180, 0.1),
+      inset 0 0 80px rgba(255, 105, 180, 0.02);
+    overflow: hidden;
+  }
+
+  .letter-paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      transparent,
+      transparent 38px,
+      rgba(255, 105, 180, 0.05) 38px,
+      rgba(255, 105, 180, 0.05) 39px
+    );
+    pointer-events: none;
+  }
+
+  .letter-paper.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .letter-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 105, 180, 0.2);
+  }
+
+  .letter-deco-left,
+  .letter-deco-right {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+  }
+
+  .letter-date {
+    font-family: var(--font-handwrite);
+    font-size: 1.1rem;
+    color: var(--pink-light);
+    margin: 8px 0;
+  }
+
+  .letter-greeting {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--pink);
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+  }
+
+  .letter-paragraph {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+
+  .letter-paragraph em {
+    color: var(--pink);
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .letter-closing {
+    font-family: var(--font-handwrite);
+    font-size: 1.2rem;
+    color: var(--pink-light);
+    margin-top: 30px;
+    text-align: right;
+  }
+
+  .letter-signature {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--pink);
+    text-align: right;
+    margin-top: 10px;
+  }
+
+  .letter-hamster {
+    position: absolute;
+    bottom: 15px;
+    opacity: 0.6;
+    animation: hamsterPeek 4s ease-in-out infinite;
+  }
+
+  .letter-hamster-left {
+    left: 15px;
+  }
+
+  .letter-hamster-right {
+    right: 15px;
+    animation-delay: 2s;
+  }
+
+  @keyframes hamsterPeek {
+    0%, 100% { transform: translateY(5px) rotate(-3deg); }
+    50% { transform: translateY(-5px) rotate(3deg); }
+  }
+
+  @media (max-width: 768px) {
+    .letter-paper {
+      padding: 30px 20px;
+    }
+    .letter-greeting {
+      font-size: 1.8rem;
+    }
+    .letter-paragraph {
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .letter-hamster {
+      display: none;
+    }
+    .envelope {
+      width: 220px;
+      height: 150px;
+    }
+  }
+</style>

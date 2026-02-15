@@ -1,0 +1,295 @@
+---
+// Hero landing section with animated entrance
+---
+
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-content">
+    <!-- Kawaii hamster and cat together SVG -->
+    <div class="hero-hamster reveal-scale">
+      <svg viewBox="0 0 300 200" width="250" height="170" class="hamster-svg">
+        <!-- Hamster (left - her) -->
+        <g transform="translate(85, 30)">
+          <ellipse cx="0" cy="95" rx="35" ry="28" fill="#f4d4a0" stroke="#e8c080" stroke-width="1.5"/>
+          <ellipse cx="0" cy="100" rx="22" ry="18" fill="#fef0d6"/>
+          <circle cx="0" cy="55" r="30" fill="#f4d4a0" stroke="#e8c080" stroke-width="1.5"/>
+          <ellipse cx="-22" cy="32" rx="12" ry="15" fill="#f4d4a0"/>
+          <ellipse cx="-22" cy="32" rx="7" ry="9" fill="#ffb6c1"/>
+          <ellipse cx="22" cy="32" rx="12" ry="15" fill="#f4d4a0"/>
+          <ellipse cx="22" cy="32" rx="7" ry="9" fill="#ffb6c1"/>
+          <circle cx="-10" cy="52" r="5" fill="#2c2c2c"/>
+          <circle cx="-12" cy="50" r="2" fill="#fff"/>
+          <circle cx="10" cy="52" r="5" fill="#2c2c2c"/>
+          <circle cx="8" cy="50" r="2" fill="#fff"/>
+          <ellipse cx="0" cy="62" rx="3" ry="2" fill="#ffb6c1"/>
+          <path d="M -5 66 Q 0 72 5 66" fill="none" stroke="#e8a080" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="-18" cy="60" rx="7" ry="4" fill="#ffb6c1" opacity="0.4"/>
+          <ellipse cx="18" cy="60" rx="7" ry="4" fill="#ffb6c1" opacity="0.4"/>
+          <text x="-8" y="18" font-size="14">💕</text>
+        </g>
+        
+        <!-- Cat (right - him) -->
+        <g transform="translate(210, 28)">
+          <ellipse cx="0" cy="97" rx="30" ry="28" fill="#3a3a3a" stroke="#4a4a4a" stroke-width="1.5"/>
+          <ellipse cx="0" cy="102" rx="18" ry="16" fill="#4a4a4a"/>
+          <circle cx="0" cy="58" r="26" fill="#3a3a3a" stroke="#4a4a4a" stroke-width="1.5"/>
+          <!-- Cat ears (pointy!) -->
+          <polygon points="-22,40 -15,15 -5,38" fill="#3a3a3a" stroke="#4a4a4a" stroke-width="1"/>
+          <polygon points="-19,38 -15,22 -8,37" fill="#ffb6c1"/>
+          <polygon points="22,40 15,15 5,38" fill="#3a3a3a" stroke="#4a4a4a" stroke-width="1"/>
+          <polygon points="19,38 15,22 8,37" fill="#ffb6c1"/>
+          <!-- Cat eyes -->
+          <ellipse cx="-9" cy="54" rx="5" ry="6" fill="#90EE90"/>
+          <ellipse cx="-9" cy="54" rx="2" ry="5" fill="#2c2c2c"/>
+          <circle cx="-10" cy="52" r="1.5" fill="rgba(255,255,255,0.6)"/>
+          <ellipse cx="9" cy="54" rx="5" ry="6" fill="#90EE90"/>
+          <ellipse cx="9" cy="54" rx="2" ry="5" fill="#2c2c2c"/>
+          <circle cx="8" cy="52" r="1.5" fill="rgba(255,255,255,0.6)"/>
+          <!-- Cat nose & mouth -->
+          <ellipse cx="0" cy="62" rx="3" ry="2" fill="#ffb6c1"/>
+          <path d="M 0 64 L -4 67" fill="none" stroke="#555" stroke-width="1" stroke-linecap="round"/>
+          <path d="M 0 64 L 4 67" fill="none" stroke="#555" stroke-width="1" stroke-linecap="round"/>
+          <!-- Whiskers -->
+          <line x1="-10" y1="62" x2="-28" y2="58" stroke="#555" stroke-width="0.8"/>
+          <line x1="-10" y1="64" x2="-28" y2="64" stroke="#555" stroke-width="0.8"/>
+          <line x1="10" y1="62" x2="28" y2="58" stroke="#555" stroke-width="0.8"/>
+          <line x1="10" y1="64" x2="28" y2="64" stroke="#555" stroke-width="0.8"/>
+          <!-- Cat tail -->
+          <path d="M 28 90 Q 45 70 38 50" fill="none" stroke="#3a3a3a" stroke-width="6" stroke-linecap="round"/>
+          <text x="-8" y="18" font-size="12">✨</text>
+        </g>
+        
+        <!-- Heart between them -->
+        <g class="floating-heart-svg">
+          <text x="132" y="80" font-size="22">💖</text>
+        </g>
+        
+        <!-- Distance line (dashed) -->
+        <line x1="105" y1="130" x2="185" y2="130" stroke="var(--pink)" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <h1 class="hero-title reveal">
+      <span class="hero-para">Para ti,</span>
+      <span class="hero-name glow">Yuli</span>
+    </h1>
+    
+    <p class="hero-subtitle reveal">
+      Un pedacito de mi corazón hecho código,<br>
+      cruzando la distancia solo para ti, mi niña 💕
+    </p>
+
+    <div class="hero-hearts">
+      <span class="deco-heart" style="--delay: 0s; --x: -120px; --y: -60px;">💖</span>
+      <span class="deco-heart" style="--delay: 0.3s; --x: 130px; --y: -40px;">🌸</span>
+      <span class="deco-heart" style="--delay: 0.6s; --x: -80px; --y: 50px;">✨</span>
+      <span class="deco-heart" style="--delay: 0.9s; --x: 100px; --y: 70px;">🌙</span>
+      <span class="deco-heart" style="--delay: 1.2s; --x: -150px; --y: 20px;">💕</span>
+      <span class="deco-heart" style="--delay: 1.5s; --x: 160px; --y: -20px;">🌺</span>
+    </div>
+
+    <button class="kawaii-btn hero-btn reveal" id="startBtn">
+      🌸 Abre tu regalito 💝
+    </button>
+  </div>
+
+  <!-- Animated sparkles -->
+  <div class="sparkle-field" id="sparkleField"></div>
+</section>
+
+<script>
+  // Start button smooth scroll
+  document.getElementById('startBtn')?.addEventListener('click', () => {
+    document.getElementById('loveLetterSection')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Generate sparkles
+  const field = document.getElementById('sparkleField');
+  if (field) {
+    for (let i = 0; i < 50; i++) {
+      const star = document.createElement('span');
+      star.className = 'sparkle-star';
+      star.textContent = '✦';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      star.style.animationDuration = (2 + Math.random() * 3) + 's';
+      star.style.fontSize = (8 + Math.random() * 12) + 'px';
+      field.appendChild(star);
+    }
+  }
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #1a0a15 0%, #0a0a0a 70%);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(255, 105, 180, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(195, 166, 255, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, rgba(255, 77, 109, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+  }
+
+  .hero-hamster {
+    margin-bottom: 20px;
+    animation: hamsterBounce 3s ease-in-out infinite;
+  }
+
+  .hamster-svg {
+    filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.3));
+  }
+
+  .floating-heart-svg {
+    animation: heartFloat 2s ease-in-out infinite;
+  }
+
+  @keyframes hamsterBounce {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+  }
+
+  @keyframes heartFloat {
+    0%, 100% { transform: translate(100, 50) scale(0.5) translateY(0); }
+    50% { transform: translate(100, 50) scale(0.6) translateY(-10px); }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    margin-bottom: 15px;
+  }
+
+  .hero-para {
+    display: block;
+    font-size: 2.5rem;
+    color: var(--text-secondary);
+    font-family: var(--font-handwrite);
+    margin-bottom: 5px;
+  }
+
+  .hero-name {
+    font-size: 5rem;
+    color: var(--pink);
+    letter-spacing: 3px;
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { 
+      text-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink), 0 0 40px var(--pink-dark);
+      transform: scale(1);
+    }
+    50% { 
+      text-shadow: 0 0 20px var(--pink), 0 0 40px var(--pink), 0 0 60px var(--pink-dark), 0 0 80px var(--pink-dark);
+      transform: scale(1.02);
+    }
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-handwrite);
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  .hero-btn {
+    font-size: 1.1rem;
+    padding: 16px 40px;
+    animation: btnPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes btnPulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(255, 105, 180, 0.7), 0 0 60px rgba(255, 105, 180, 0.3); }
+  }
+
+  .hero-hearts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+  }
+
+  .deco-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: decoFloat 4s ease-in-out infinite;
+    animation-delay: var(--delay);
+    transform: translate(var(--x), var(--y));
+  }
+
+  @keyframes decoFloat {
+    0%, 100% { transform: translate(var(--x), var(--y)) scale(1); opacity: 0.7; }
+    50% { transform: translate(var(--x), calc(var(--y) - 20px)) scale(1.2); opacity: 1; }
+  }
+
+  .sparkle-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .sparkle-star {
+    position: absolute;
+    color: var(--pink-light);
+    animation: twinkle ease-in-out infinite;
+    opacity: 0;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 0.8; transform: scale(1); }
+  }
+
+  @media (max-width: 768px) {
+    .hero-name {
+      font-size: 3.5rem;
+    }
+    .hero-para {
+      font-size: 1.8rem;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    .hamster-svg {
+      width: 120px;
+      height: 120px;
+    }
+  }
+</style>

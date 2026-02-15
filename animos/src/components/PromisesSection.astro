@@ -1,0 +1,238 @@
+---
+// Promise cards section - promises for the future
+const promises = [
+  { emoji: "📖", text: "Prometo aprender a quererte bonito, despacito, como se cuidan las cosas hermosas" },
+  { emoji: "🌱", text: "Prometo crecer juntitos, no solo estar a tu ladito" },
+  { emoji: "🌸", text: "Prometo seguir plantando florcitas en este jardín que tiene tu nombre" },
+  { emoji: "🌍", text: "Prometo que la distancia será solo un detallito, nunca un obstáculo" },
+  { emoji: "🦋", text: "Prometo respetar tu caminito y verte brillar sin apurarte, corazón" },
+  { emoji: "💪", text: "Prometo que cuando caiga, me levantaré con más ganas y más cariñito" },
+  { emoji: "✨", text: "Prometo no forzar lo que es hermoso, dejarlo florecer a su tiempito" },
+  { emoji: "☕", text: "Prometo acompañarte, mi niña, porque quiero caminar junto a ti" },
+];
+---
+
+<section class="promises-section" id="promisesSection">
+  <div class="promises-header reveal">
+    <h2 class="section-title">
+      <span class="title-deco">✨</span>
+      Mis Promesas Para Ti
+      <span class="title-deco">✨</span>
+    </h2>
+    <p class="section-subtitle">Promesitas de un loquito enamorado 💕</p>
+  </div>
+
+  <div class="promises-container">
+    {promises.map((promise, index) => (
+      <div class={`promise-card ${index % 2 === 0 ? 'reveal-left' : 'reveal-right'}`} style={`animation-delay: ${index * 0.1}s`}>
+        <div class="promise-icon-wrap">
+          <span class="promise-icon">{promise.emoji}</span>
+          <div class="promise-ring"></div>
+        </div>
+        <p class="promise-text">{promise.text}</p>
+        <div class="promise-check" id={`check-${index}`}>
+          <span class="check-mark">💖</span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Pinky promise hamsters -->
+  <div class="pinky-promise reveal-scale">
+    <div class="pinky-hamster-pair">
+      <svg viewBox="0 0 240 120" width="220" height="110">
+        <!-- Left: Cat (him) -->
+        <ellipse cx="60" cy="62" rx="26" ry="24" fill="#3a3a3a"/>
+        <polygon points="38,42 44,22 52,42" fill="#3a3a3a"/>
+        <polygon points="40,40 44,26 50,40" fill="#ffb6c1"/>
+        <polygon points="68,42 76,22 82,42" fill="#3a3a3a"/>
+        <polygon points="70,40 76,26 80,40" fill="#ffb6c1"/>
+        <circle cx="50" cy="56" r="3.5" fill="#7dcea0"/>
+        <circle cx="50" cy="55.5" r="1.8" fill="#1a1a1a"/>
+        <circle cx="70" cy="56" r="3.5" fill="#7dcea0"/>
+        <circle cx="70" cy="55.5" r="1.8" fill="#1a1a1a"/>
+        <ellipse cx="60" cy="63" rx="2.5" ry="1.5" fill="#ffb6c1"/>
+        <path d="M 52 67 Q 56 65 60 67 Q 64 65 68 67" fill="none" stroke="#888" stroke-width="1"/>
+        <!-- Cat paw reaching -->
+        <ellipse cx="88" cy="78" rx="7" ry="5" fill="#3a3a3a" stroke="#555" stroke-width="1"/>
+        
+        <!-- Right: Hamster (her) -->
+        <circle cx="180" cy="60" r="28" fill="#f4d4a0"/>
+        <ellipse cx="158" cy="38" rx="9" ry="12" fill="#f4d4a0"/>
+        <ellipse cx="158" cy="38" rx="5.5" ry="7.5" fill="#ffb6c1"/>
+        <ellipse cx="202" cy="38" rx="9" ry="12" fill="#f4d4a0"/>
+        <ellipse cx="202" cy="38" rx="5.5" ry="7.5" fill="#ffb6c1"/>
+        <text x="162" y="58" font-size="10">💖</text>
+        <text x="182" y="58" font-size="10">💖</text>
+        <ellipse cx="180" cy="64" rx="2.5" ry="2" fill="#ffb6c1"/>
+        <path d="M 173 68 Q 180 75 187 68" fill="none" stroke="#e8a080" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="163" cy="62" rx="6" ry="4" fill="#ffb6c1" opacity="0.4"/>
+        <ellipse cx="197" cy="62" rx="6" ry="4" fill="#ffb6c1" opacity="0.4"/>
+        <!-- Hamster paw reaching -->
+        <ellipse cx="152" cy="78" rx="7" ry="5" fill="#f4d4a0" stroke="#e8c080" stroke-width="1"/>
+        
+        <!-- Heart between them -->
+        <text x="108" y="55" font-size="24" class="pinky-heart">💕</text>
+        
+        <!-- Pinky link -->
+        <path d="M 93 78 Q 120 95 147 78" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3"/>
+      </svg>
+    </div>
+    <p class="pinky-text">Promesita de meñique... aunque a distancia 🤙💕</p>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.promise-card').forEach((card, index) => {
+    card.addEventListener('click', () => {
+      const check = document.getElementById(`check-${index}`);
+      if (check) {
+        check.classList.toggle('checked');
+        card.classList.toggle('accepted');
+      }
+    });
+  });
+</script>
+
+<style>
+  .promises-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0f0a0e 50%, #0a0a0a 100%);
+  }
+
+  .promises-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .promises-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 20px;
+  }
+
+  .promise-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #1a1018, #0f080d);
+    border: 1px solid rgba(255, 105, 180, 0.15);
+    border-radius: 16px;
+    padding: 18px 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .promise-card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.15);
+    transform: translateX(5px);
+  }
+
+  .promise-card.accepted {
+    border-color: var(--pink);
+    background: linear-gradient(135deg, #1a0f18, #150a12);
+  }
+
+  .promise-icon-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .promise-icon {
+    font-size: 1.8rem;
+    display: block;
+  }
+
+  .promise-ring {
+    position: absolute;
+    inset: -5px;
+    border: 2px solid rgba(255, 105, 180, 0.2);
+    border-radius: 50%;
+    animation: ringPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes ringPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.6; }
+  }
+
+  .promise-text {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  .promise-check {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .check-mark {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s;
+    font-size: 0.9rem;
+  }
+
+  .promise-check.checked {
+    border-color: var(--pink);
+    background: rgba(255, 105, 180, 0.1);
+  }
+
+  .promise-check.checked .check-mark {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .pinky-promise {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .pinky-hamster-pair {
+    margin-bottom: 15px;
+  }
+
+  .pinky-heart {
+    animation: pinkyHeartBeat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pinkyHeartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .pinky-text {
+    font-family: var(--font-handwrite);
+    font-size: 1.3rem;
+    color: var(--pink-light);
+  }
+
+  @media (max-width: 768px) {
+    .promise-card {
+      padding: 14px 18px;
+    }
+    .promise-text {
+      font-size: 0.85rem;
+    }
+    .promise-icon {
+      font-size: 1.4rem;
+    }
+  }
+</style>

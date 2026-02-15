@@ -1,0 +1,231 @@
+---
+// Songs section - YouTube embeds of songs that remind you of her
+const songs = [
+  {
+    title: "Do Better",
+    artist: "Cuco",
+    why: "Porque quiero ser mejorcito para ti, aprender a cuidar lo bonito que tenemos",
+    videoId: "rDzThMqJHD4&list=RDrDzThMqJHD4",
+  },
+  {
+    title: "Pensando en Ti",
+    artist: "LÚA",
+    why: "Porque hay noches en las que tu recuerdo es la canción de cuna más bonita que existe",
+    videoId: "EhWRxxPFmJo&list=RDEhWRxxPFmJo",
+  },
+  {
+    title: "Dile",
+    artist: "Tranzas",
+    why: "Porque hay cosas que aún no sé decirte... pero esta canción las susurra por mí",
+    videoId: "qvWYh0mf4gU&list=RDqvWYh0mf4gU",
+  },
+  {
+    title: "Bewitched",
+    artist: "Laufey",
+    why: "Por cada besito que me hipnotiza en llamada... quedé embrujadito, mi niña 💕",
+    videoId: "hxaB6V5byjA&list=RDhxaB6V5byjA",
+  },
+  {
+    title: "The Only Exception",
+    artist: "Paramore",
+    why: "Porque tú eres esa excepción bonita que me hizo creer de nuevo en todo esto",
+    videoId: "xFwCLkv17UY&list=RDxFwCLkv17UY",
+  },
+  {
+    title: "Sentimiento Original",
+    artist: "Paola Navarrete",
+    why: "Porque lo que siento es tan original, tan nuevo, tan diferente... tan tú",
+    videoId: "J4UhlOs7rUU&list=RDJ4UhlOs7rUU",
+  },
+];
+---
+
+<section class="songs-section" id="songsSection">
+  <div class="songs-header reveal">
+    <h2 class="section-title">
+      <span class="title-deco">🎵</span>
+      Canciones Que Me Hacen Pensar en Ti
+      <span class="title-deco">🎵</span>
+    </h2>
+    <p class="section-subtitle">Cada melodía guarda un pedacito de lo nuestro 🎶</p>
+  </div>
+
+  <div class="songs-grid">
+    {songs.map((song, index) => (
+      <div class={`song-card ${index % 2 === 0 ? 'reveal-left' : 'reveal-right'}`} style={`animation-delay: ${index * 0.1}s`}>
+        <div class="song-info">
+          <div class="song-number">{String(index + 1).padStart(2, '0')}</div>
+          <div class="song-details">
+            <h3 class="song-title">🎵 {song.title}</h3>
+            <p class="song-artist">{song.artist}</p>
+            <p class="song-why"><em>"{song.why}"</em></p>
+          </div>
+        </div>
+        <div class="song-player">
+          <div class="video-container">
+            <iframe 
+              src={`https://www.youtube.com/embed/${song.videoId}`}
+              title={song.title}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <!-- Mini decoration -->
+        <div class="song-deco">
+          {index % 3 === 0 ? '🎶' : index % 3 === 1 ? '💕' : '✨'}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="songs-footer reveal">
+    <p class="songs-note">
+      🎧 Hay cositas que no sé decir con palabras...
+      <br>pero estas melodías las susurran bonito por mí 💕
+    </p>
+  </div>
+</section>
+
+<style>
+  .songs-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0e080f 50%, #0a0a0a 100%);
+  }
+
+  .songs-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .songs-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .song-card {
+    background: linear-gradient(135deg, #1a1018, #0f080d);
+    border: 1px solid rgba(255, 105, 180, 0.15);
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .song-card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .song-info {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+
+  .song-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--pink);
+    opacity: 0.3;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .song-details {
+    flex: 1;
+  }
+
+  .song-title {
+    font-family: var(--font-handwrite);
+    font-size: 1.3rem;
+    color: var(--pink);
+    margin-bottom: 4px;
+  }
+
+  .song-artist {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .song-why {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .song-player {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+  }
+
+  .song-deco {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.2rem;
+    opacity: 0.4;
+    animation: songDecoFloat 3s ease-in-out infinite;
+  }
+
+  @keyframes songDecoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(10deg); }
+  }
+
+  .songs-footer {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .songs-note {
+    font-family: var(--font-handwrite);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+
+  @media (max-width: 768px) {
+    .song-card {
+      padding: 18px;
+    }
+    .song-number {
+      font-size: 2rem;
+    }
+    .song-title {
+      font-size: 1.1rem;
+    }
+  }
+</style>

@@ -1,0 +1,462 @@
+---
+// Poetry section with beautiful interactive poems
+const poems = [
+  {
+    title: "Cafecito de Tus Ojos",
+    emoji: "☕",
+    lines: [
+      "Hay una combinación rarita y bonita",
+      "que es agridulce como las tardes de lluvia,",
+      "como el primer sorbito de café",
+      "cuando aún quema un poquito.",
+      "",
+      "Así son tus ojitos,",
+      "así sabe este sentimiento:",
+      "dulce, amargo, ácido,",
+      "delicioso y nuevo.",
+      "",
+      "Adoro tomar café,",
+      "pero tomar té me encantaría...",
+      "porque cada nota nueva de tu voz",
+      "es la melodía más bonita",
+      "que ha probado mi corazoncito. ☕💕"
+    ]
+  },
+  {
+    title: "El Loquito Que Insiste",
+    emoji: "🌙",
+    lines: [
+      "Soy ese tontito que tiembla",
+      "y le encanta temblar,",
+      "ese rarito que siente bonito",
+      "aunque el miedo le recorra",
+      "cada pedacito de piel.",
+      "",
+      "Un loquito que ama con todo",
+      "y que no sabe hacerlo de otra forma,",
+      "que insiste con cariñito",
+      "y con esa terquedad",
+      "que solo los soñadores conocen.",
+      "",
+      "Porque amar bonito",
+      "es mi forma favorita",
+      "de estar vivo. 🌙✨"
+    ]
+  },
+  {
+    title: "Sin Máscaras",
+    emoji: "🦋",
+    lines: [
+      "La conexión más bonita del mundo",
+      "vive entre dos almas",
+      "que se encuentran despacito,",
+      "sin disfraces ni caretas.",
+      "",
+      "Y luego estás tú,",
+      "con esa voz tan dulcecita,",
+      "divina, celestial,",
+      "que hace que todo se sienta",
+      "como llegar a casa.",
+      "",
+      "No quiero salvarte, corazón,",
+      "solo quiero estar ahí,",
+      "cerquita, acompañándote,",
+      "porque lo hermoso se cuida",
+      "con poquito y con amor. 🦋💕"
+    ]
+  },
+  {
+    title: "Paso a Pasito",
+    emoji: "🌱",
+    lines: [
+      "Todo lo que alguna vez hice",
+      "lo hice queriendo bonito,",
+      "por eso no me arrepiento",
+      "de ni un solo momentito.",
+      "",
+      "Quizá no fui perfecto,",
+      "y eso está bien...",
+      "porque sé que puedo serlo",
+      "poquito a poquito,",
+      "pasito a pasito,",
+      "como las flores que crecen",
+      "sin prisas pero con ganas. 🌱💖"
+    ]
+  },
+  {
+    title: "Cruzando Distancias",
+    emoji: "✨",
+    lines: [
+      "Hay kilómetros entre tu risita",
+      "y mis ganas de escucharla,",
+      "pantallas que nos separan",
+      "pero que nunca nos alejan.",
+      "",
+      "Es rarito sentir algo",
+      "tan bonito y diferente,",
+      "como un cielito estrellado",
+      "que solo se ve desde lejos",
+      "pero que brilla todito para ti.",
+      "",
+      "Mi niña, qué bonito es",
+      "quererte desde aquí,",
+      "cerquita del alma",
+      "aunque lejitos de tus manos. ✨💕"
+    ]
+  },
+  {
+    title: "Mi Jardincito",
+    emoji: "🌸",
+    lines: [
+      "Me quedará un jardín bonito",
+      "de flores que planté despacito,",
+      "cada una regada con cariño",
+      "y con el color de lo que siento.",
+      "",
+      "No sé si estarás entre los pétalos",
+      "cuando el jardín florezca enterito,",
+      "pero cada florcita tiene tu nombre",
+      "y huele a tu sonrisa.",
+      "",
+      "Este loquito soñador",
+      "seguirá plantando flores",
+      "y compartiendo su amorcito",
+      "empezando por ti, corazón. 🌸💕"
+    ]
+  }
+];
+---
+
+<section class="poems-section" id="poemsSection">
+  <div class="poems-header reveal">
+    <h2 class="section-title">
+      <span class="title-deco">✨</span>
+      Poemas Para Ti
+      <span class="title-deco">✨</span>
+    </h2>
+    <p class="section-subtitle">Toca cada tarjeta para leer 💕</p>
+  </div>
+
+  <div class="poems-carousel" id="poemsCarousel">
+    {poems.map((poem, index) => (
+      <div class="poem-card reveal-scale" style={`animation-delay: ${index * 0.15}s`}>
+        <div class="poem-card-front">
+          <div class="poem-card-emoji">{poem.emoji}</div>
+          <h3 class="poem-card-title">{poem.title}</h3>
+          <div class="poem-card-hamster">
+            {index % 2 === 0 ? (
+              <svg viewBox="0 0 60 60" width="40" height="40">
+                <circle cx="30" cy="30" r="18" fill="#f4d4a0"/>
+                <ellipse cx="18" cy="16" rx="6" ry="8" fill="#f4d4a0"/>
+                <ellipse cx="18" cy="16" rx="3.5" ry="5" fill="#ffb6c1"/>
+                <ellipse cx="42" cy="16" rx="6" ry="8" fill="#f4d4a0"/>
+                <ellipse cx="42" cy="16" rx="3.5" ry="5" fill="#ffb6c1"/>
+                <circle cx="24" cy="28" r="3" fill="#2c2c2c"/>
+                <circle cx="23" cy="27" r="1" fill="#fff"/>
+                <circle cx="36" cy="28" r="3" fill="#2c2c2c"/>
+                <circle cx="35" cy="27" r="1" fill="#fff"/>
+                <ellipse cx="30" cy="33" rx="2" ry="1.5" fill="#ffb6c1"/>
+                <path d="M 26 36 Q 30 40 34 36" fill="none" stroke="#e8a080" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            ) : (
+              <svg viewBox="0 0 60 60" width="40" height="40">
+                <ellipse cx="30" cy="32" rx="16" ry="14" fill="#3a3a3a"/>
+                <polygon points="14,22 18,10 24,22" fill="#3a3a3a"/>
+                <polygon points="16,20 19,12 23,21" fill="#ffb6c1"/>
+                <polygon points="36,22 42,10 46,22" fill="#3a3a3a"/>
+                <polygon points="38,21 41,12 44,20" fill="#ffb6c1"/>
+                <circle cx="24" cy="28" r="3" fill="#7dcea0"/>
+                <circle cx="24" cy="27.5" r="1.5" fill="#1a1a1a"/>
+                <circle cx="36" cy="28" r="3" fill="#7dcea0"/>
+                <circle cx="36" cy="27.5" r="1.5" fill="#1a1a1a"/>
+                <ellipse cx="30" cy="33" rx="2" ry="1.2" fill="#ffb6c1"/>
+                <path d="M 24 36 Q 27 34 30 36 Q 33 34 36 36" fill="none" stroke="#888" stroke-width="0.8"/>
+              </svg>
+            )}
+          </div>
+          <p class="poem-card-hint">Toca para leer ✨</p>
+        </div>
+        <div class="poem-card-back">
+          <h3 class="poem-back-title">{poem.emoji} {poem.title}</h3>
+          <div class="poem-text">
+            {poem.lines.map(line => (
+              line === "" ? <br /> : <p class="poem-line">{line}</p>
+            ))}
+          </div>
+          <p class="poem-back-hint">Toca para cerrar</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="poems-nav" id="poemsNav">
+    {poems.map((_, i) => (
+      <button class={`poems-dot ${i === 0 ? 'active' : ''}`} data-index={i} aria-label={`Poema ${i + 1}`}>
+        {i % 2 === 0 ? '🌸' : '✨'}
+      </button>
+    ))}
+  </div>
+</section>
+
+<script>
+  // Card flip
+  document.querySelectorAll('.poem-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+
+  // Carousel with scroll snap
+  const carousel = document.getElementById('poemsCarousel');
+  const dots = document.querySelectorAll('.poems-dot');
+
+  if (carousel) {
+    carousel.addEventListener('scroll', () => {
+      const scrollLeft = carousel.scrollLeft;
+      const cardWidth = carousel.querySelector('.poem-card')?.clientWidth || 300;
+      const gap = 24;
+      const index = Math.round(scrollLeft / (cardWidth + gap));
+      
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = Number(dot.getAttribute('data-index'));
+        const cardWidth = carousel.querySelector('.poem-card')?.clientWidth || 300;
+        const gap = 24;
+        carousel.scrollTo({
+          left: index * (cardWidth + gap),
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
+</script>
+
+<style>
+  .poems-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0f0812 50%, #0a0a0a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .poems-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--pink);
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  }
+
+  .title-deco {
+    display: inline-block;
+    animation: decoSpin 3s linear infinite;
+  }
+
+  @keyframes decoSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  .section-subtitle {
+    font-family: var(--font-handwrite);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+  }
+
+  /* Carousel */
+  .poems-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .poems-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card */
+  .poem-card {
+    flex: 0 0 320px;
+    height: 450px;
+    perspective: 1000px;
+    scroll-snap-align: center;
+    cursor: pointer;
+  }
+
+  .poem-card-front,
+  .poem-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    transition: transform 0.6s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .poem-card-front {
+    background: linear-gradient(135deg, #1a1018, #12080f);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.1);
+  }
+
+  .poem-card-front:hover {
+    border-color: var(--pink);
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
+  }
+
+  .poem-card-back {
+    background: linear-gradient(135deg, #1a1018, #12080f);
+    border: 2px solid var(--pink);
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding-top: 25px;
+  }
+
+  .poem-card.flipped .poem-card-front {
+    transform: rotateY(180deg);
+  }
+
+  .poem-card.flipped .poem-card-back {
+    transform: rotateY(360deg);
+  }
+
+  .poem-card-emoji {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    animation: emojiPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes emojiPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(5deg); }
+  }
+
+  .poem-card-title {
+    font-family: var(--font-handwrite);
+    font-size: 1.5rem;
+    color: var(--pink);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .poem-card-hamster {
+    margin-bottom: 15px;
+    animation: hamsterWiggle 3s ease-in-out infinite;
+  }
+
+  @keyframes hamsterWiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .poem-card-hint {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    animation: fadeInOut 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .poem-back-title {
+    font-family: var(--font-handwrite);
+    font-size: 1.2rem;
+    color: var(--pink);
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .poem-text {
+    width: 100%;
+  }
+
+  .poem-line {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .poem-back-hint {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 15px;
+    font-family: var(--font-body);
+  }
+
+  /* Navigation dots */
+  .poems-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .poems-dot {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0.4;
+    filter: grayscale(1);
+    padding: 5px;
+  }
+
+  .poems-dot.active {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: scale(1.3);
+  }
+
+  .poems-dot:hover {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .poem-card {
+      flex: 0 0 280px;
+      height: 420px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+    }
+    .poem-line {
+      font-size: 0.8rem;
+    }
+  }
+</style>

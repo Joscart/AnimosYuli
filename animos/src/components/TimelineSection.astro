@@ -1,0 +1,257 @@
+---
+// Interactive timeline of special moments
+const moments = [
+  {
+    icon: "🌱",
+    title: "El Comienzo Bonito",
+    text: "Te conocí amistoso como cualquier día, ansioso de jugar y conocer. Crear nuevos lazos, nuevas historias... simplemente experimentar de ellas. Sin saber que el destino tenía preparado algo tan bonito.",
+    side: "left"
+  },
+  {
+    icon: "☕",
+    title: "Sabor a Algo Nuevo",
+    text: "Como un cafecito por la mañana que no esperabas pero que te cambia el día enterito. Así fue conocerte: sabores dulces, notas amargas, una combinación agridulce y deliciosa que no puedo dejar de saborear.",
+    side: "right"
+  },
+  {
+    icon: "🦋",
+    title: "Dudas de un Tontito",
+    text: "Dudoso de si dar un pasito extra, consciente de que amar tiene el costo de dejar de querer y nunca más volver a ver igual. Pero hay algo en tu voz, en tus manías, que me dice que vale la pena cada mariposa en el estómago.",
+    side: "left"
+  },
+  {
+    icon: "🌙",
+    title: "Noches Sin Máscara",
+    text: "La verdadera conexión vive entre dos almas que se encuentran sin máscaras. Y en esas noches largas de conversación, descubrí que contigo no necesito fingir ser otra cosa. Solo ser este rarito que ama bonito.",
+    side: "right"
+  },
+  {
+    icon: "🌸",
+    title: "Un Jardín Que Floreció",
+    text: "Cada conversación fue una semillita que planté sin darme cuenta. Y hoy miro hacia atrás y hay un jardín enterito de flores bonitas que regué pensando en tu sonrisa, corazón.",
+    side: "left"
+  },
+  {
+    icon: "💕",
+    title: "Este Loquito Sigue Aquí",
+    text: "Siendo tu amigo soy feliz, pero hay algo más que late fuertito. Si estás dispuesta a intentar, creo que ambos podríamos amar bonito. Y si no... no me molestaría, porque lo que sé de ti es demasiado hermoso como para dejarlo ir. 💕",
+    side: "right"
+  }
+];
+---
+
+<section class="timeline-section" id="timelineSection">
+  <div class="timeline-header reveal">
+    <h2 class="section-title">
+      <span class="title-deco">🌸</span>
+      Un Pedacito de Mi Alma
+      <span class="title-deco">🌸</span>
+    </h2>
+    <p class="section-subtitle">Las cositas que llevo guardadas en el corazón 💕</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-line"></div>
+    
+    {moments.map((moment, index) => (
+      <div class={`timeline-item ${moment.side === 'left' ? 'reveal-left' : 'reveal-right'}`} data-side={moment.side}>
+        <div class="timeline-dot">
+          <span>{moment.icon}</span>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-card-glow"></div>
+          <h3 class="timeline-card-title">{moment.icon} {moment.title}</h3>
+          <p class="timeline-card-text">{moment.text}</p>
+          
+          <!-- Decorative animal -->
+          {index % 2 === 0 ? (
+            <div class="timeline-mini-hamster">
+              <svg viewBox="0 0 40 40" width="25" height="25">
+                <circle cx="20" cy="20" r="12" fill="#f4d4a0"/>
+                <ellipse cx="12" cy="12" rx="4" ry="5" fill="#f4d4a0"/>
+                <ellipse cx="12" cy="12" rx="2.5" ry="3" fill="#ffb6c1"/>
+                <ellipse cx="28" cy="12" rx="4" ry="5" fill="#f4d4a0"/>
+                <ellipse cx="28" cy="12" rx="2.5" ry="3" fill="#ffb6c1"/>
+                <circle cx="16" cy="19" r="2" fill="#2c2c2c"/>
+                <circle cx="24" cy="19" r="2" fill="#2c2c2c"/>
+                <ellipse cx="20" cy="22" rx="1.5" ry="1" fill="#ffb6c1"/>
+                <path d="M 17 24 Q 20 27 23 24" fill="none" stroke="#e8a080" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+            </div>
+          ) : (
+            <div class="timeline-mini-hamster">
+              <svg viewBox="0 0 40 40" width="25" height="25">
+                <ellipse cx="20" cy="22" rx="11" ry="10" fill="#3a3a3a"/>
+                <polygon points="10,14 13,5 17,14" fill="#3a3a3a"/>
+                <polygon points="11,13 13,7 16,13" fill="#ffb6c1"/>
+                <polygon points="23,14 27,5 30,14" fill="#3a3a3a"/>
+                <polygon points="24,13 27,7 29,13" fill="#ffb6c1"/>
+                <circle cx="16" cy="19" r="2" fill="#7dcea0"/>
+                <circle cx="16" cy="18.5" r="1" fill="#1a1a1a"/>
+                <circle cx="24" cy="19" r="2" fill="#7dcea0"/>
+                <circle cx="24" cy="18.5" r="1" fill="#1a1a1a"/>
+                <ellipse cx="20" cy="23" rx="1.5" ry="1" fill="#ffb6c1"/>
+              </svg>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .timeline-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0d080f 50%, #0a0a0a 100%);
+  }
+
+  .timeline-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--pink), var(--pink), transparent);
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .timeline-item[data-side="left"] {
+    flex-direction: row;
+    padding-right: calc(50% + 30px);
+  }
+
+  .timeline-item[data-side="right"] {
+    flex-direction: row-reverse;
+    padding-left: calc(50% + 30px);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 45px;
+    background: var(--bg-primary);
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: translateX(-50%) scale(1.2);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
+  }
+
+  .timeline-card {
+    background: linear-gradient(135deg, #1a1018, #0f080d);
+    border: 1px solid rgba(255, 105, 180, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    width: 100%;
+  }
+
+  .timeline-card:hover {
+    border-color: var(--pink);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
+  }
+
+  .timeline-card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .timeline-card-title {
+    font-family: var(--font-handwrite);
+    font-size: 1.3rem;
+    color: var(--pink);
+    margin-bottom: 12px;
+  }
+
+  .timeline-card-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .timeline-mini-hamster {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    opacity: 0.5;
+    animation: miniHamsterBob 3s ease-in-out infinite;
+  }
+
+  @keyframes miniHamsterBob {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-4px) rotate(3deg); }
+  }
+
+  @media (max-width: 768px) {
+    .timeline-line {
+      left: 20px;
+    }
+
+    .timeline-item[data-side="left"],
+    .timeline-item[data-side="right"] {
+      flex-direction: row;
+      padding-right: 0;
+      padding-left: 60px;
+    }
+
+    .timeline-dot {
+      left: 20px;
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+    }
+
+    .timeline-card {
+      padding: 18px;
+    }
+
+    .timeline-card-title {
+      font-size: 1.1rem;
+    }
+
+    .timeline-card-text {
+      font-size: 0.85rem;
+    }
+  }
+</style>
