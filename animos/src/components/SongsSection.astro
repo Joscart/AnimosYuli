@@ -5,37 +5,43 @@ const songs = [
     title: "Do Better",
     artist: "Cuco",
     why: "Porque quiero ser mejorcito para ti, aprender a cuidar lo bonito que tenemos",
-    videoId: "rDzThMqJHD4&list=RDrDzThMqJHD4",
+    videoId: "rDzThMqJHD4",
+    listId: "RDrDzThMqJHD4",
   },
   {
     title: "Pensando en Ti",
     artist: "LÚA",
     why: "Porque hay noches en las que tu recuerdo es la canción de cuna más bonita que existe",
-    videoId: "EhWRxxPFmJo&list=RDEhWRxxPFmJo",
+    videoId: "EhWRxxPFmJo",
+    listId: "RDEhWRxxPFmJo",
   },
   {
     title: "Dile",
     artist: "Tranzas",
     why: "Porque hay cosas que aún no sé decirte... pero esta canción las susurra por mí",
-    videoId: "qvWYh0mf4gU&list=RDqvWYh0mf4gU",
+    videoId: "qvWYh0mf4gU",
+    listId: "RDqvWYh0mf4gU",
   },
   {
     title: "Bewitched",
     artist: "Laufey",
     why: "Por cada besito que me hipnotiza en llamada... quedé embrujadito, mi niña 💕",
-    videoId: "hxaB6V5byjA&list=RDhxaB6V5byjA",
+    videoId: "hxaB6V5byjA",
+    listId: "RDhxaB6V5byjA",
   },
   {
     title: "The Only Exception",
     artist: "Paramore",
     why: "Porque tú eres esa excepción bonita que me hizo creer de nuevo en todo esto",
-    videoId: "xFwCLkv17UY&list=RDxFwCLkv17UY",
+    videoId: "xFwCLkv17UY",
+    listId: "RDxFwCLkv17UY",
   },
   {
     title: "Sentimiento Original",
     artist: "Paola Navarrete",
     why: "Porque lo que siento es tan original, tan nuevo, tan diferente... tan tú",
-    videoId: "J4UhlOs7rUU&list=RDJ4UhlOs7rUU",
+    videoId: "J4UhlOs7rUU",
+    listId: "RDJ4UhlOs7rUU",
   },
 ];
 ---
@@ -63,11 +69,12 @@ const songs = [
         </div>
         <div class="song-player">
           <div class="video-container">
-            <iframe 
-              src={`https://www.youtube.com/embed/${song.videoId}`}
+            <iframe
+              src={`https://www.youtube.com/embed/${song.videoId}?list=${song.listId}`}
               title={song.title}
               frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
               loading="lazy"
             ></iframe>
